@@ -1,0 +1,24 @@
+C:\Users\Suporte\AppData\Local\Programs\Python\Python310\python.exe main.py
+
+
+
+
+prometheus --config.file=prometheus.yml
+
+
+
+system_cpu_usage_percent
+
+system_memory_usage_percent
+
+system_disk_usage_percent
+
+firebird_up
+
+firebird_query_latency_seconds
+
+firebird_active_connections
+
+python_gc_objects_collected_total
+
+python_gc_collections_total
