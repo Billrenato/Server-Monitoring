@@ -1,19 +1,5 @@
 # Firebird & System Metrics Exporter - Python Prometheus
 
-## Sumário
-
-1. Descrição
-2. Funcionalidades
-3. Pré-requisitos
-4. Instalação
-5. Configuração
-6. Estrutura do Projeto
-7. Uso
-8. Métricas Disponíveis
-9. Integração com Prometheus e Grafana
-10. Docker e CI/CD
-11. Licença
-
 ---
 
 ## Descrição
