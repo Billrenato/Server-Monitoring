@@ -1,0 +1,40 @@
+name: Firebird Exporter CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.10
+
+      - name: Instalar dependências
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Rodar testes
+        run: pytest -v --maxfail=1 --disable-warnings
+
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: build-test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build da imagem Docker
+        run: docker build -t firebird_exporter:latest -f docker/Dockerfile .
+
+      - name: Testar o container
+        run: docker run --rm firebird_exporter:latest python -m unittest

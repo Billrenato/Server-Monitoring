@@ -1,0 +1,29 @@
+stages:
+  - test
+  - build
+  - deploy
+
+variables:
+  IMAGE_NAME: firebird_exporter
+
+test:
+  stage: test
+  image: python:3.10
+  script:
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+    - pytest -v
+
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker build -t $IMAGE_NAME -f docker/Dockerfile .
+    - docker save $IMAGE_NAME > firebird_exporter.tar
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Executar aqui o deploy (manual ou automatizado)"

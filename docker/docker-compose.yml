@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  exporter:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: firebird_exporter
+    env_file: ../.env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../logs:/app/logs
+      - C:/piracaiasoft/dados:/app/db
+    restart: always
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ../config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ../config/alert_rules.yml:/etc/prometheus/alert_rules.yml
+    ports:
+      - "9090:9090"
+    depends_on:
+      - exporter
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus

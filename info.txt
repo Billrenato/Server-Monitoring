@@ -1,9 +1,14 @@
 C:\Users\Suporte\AppData\Local\Programs\Python\Python310\python.exe main.py
 
-
+docker-compose -f docker/docker-compose.yml up --build
 
 
 prometheus --config.file=prometheus.yml
+
+http://localhost:9090/ prometheus
+http://localhost:3000/ grafana
+
+
 
 
 
@@ -22,3 +27,5 @@ firebird_active_connections
 python_gc_objects_collected_total
 
 python_gc_collections_total
+
+ c:/ firebird_monitoring/ │ ├── exporter/ # Código principal do Exporter Python │ ├── __init__.py │ ├── main.py # Ponto de entrada (inicia o servidor /metrics) │ ├── metrics_firebird.py # Coleta de métricas do Firebird (via fdb) │ ├── metrics_system.py # Coleta de CPU, memória, disco, logs (via psutil) │ ├── exporter_server.py # Exposição do endpoint HTTP /metrics │ └── config.py # Configurações (host, porta, credenciais, paths) │ ├── tests/ # Testes unitários e de integração │ ├── test_firebird.py │ ├── test_system.py │ └── test_exporter.py │ ├── docker/ # Arquivos para containerização │ ├── Dockerfile │ └── docker-compose.yml │ ├── ci-cd/ # Configurações de pipeline (opcional) │ ├── github-actions.yml │ └── gitlab-ci.yml │ ├── config/ # Configurações externas │ ├── prometheus.yml # Exemplo de configuração Prometheus │ ├── grafana_dashboard.json # Template de dashboard Grafana │ └── alert_rules.yml # Regras de alerta Prometheus │ ├── logs/ # Logs do Exporter (opcional) │ └── exporter.log │ ├── requirements.txt # Dependências do Python ├── .env.example # Exemplo de variáveis de ambiente (credenciais, etc.) ├── README.md # Documentação principal do projeto └── LICENSE # Licença do projeto (MIT, Apache, etc.)
