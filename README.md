@@ -1,4 +1,4 @@
-# Firebird & System Metrics Exporter - Python Prometheus
+# Database & System Metrics Exporter - Python Prometheus
 
 ---
 
