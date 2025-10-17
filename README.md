@@ -70,7 +70,7 @@ firebird_thread = threading.Thread(
     target=collect_firebird_metrics,
     kwargs={
         "host": "localhost",
-        "database_path": r"C:\piracaiasoft\dados\banco-dados.fdb",
+        "database_path": r"C:\dados\banco-dados.fdb",
         "user": "sysdba",
         "password": "masterkey",
         "interval": 10,
