@@ -31,8 +31,8 @@ def main():
     firebird_thread = threading.Thread(
         target=collect_firebird_metrics,
         kwargs={
-            "host": "localhost",
-            "database_path": r"C:\piracaiasoft\dados\PARQUE-BRASIL-LOJA1.fdb",  # ✅ Caminho Windows correto
+            "host": "host.docker.internal",
+            "database_path": "/app/db/PARQUE-BRASIL-LOJA1.fdb",  # ✅ Caminho Windows correto
             "user": "sysdba",
             "password": "masterkey",
             "interval": 10,

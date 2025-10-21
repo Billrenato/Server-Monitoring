@@ -5,6 +5,8 @@ docker-compose -f docker/docker-compose.yml up --build
 
 prometheus --config.file=prometheus.yml
 
+
+http://127.0.0.1:8000/ metricas
 http://localhost:9090/ prometheus
 http://localhost:3000/ grafana
 
